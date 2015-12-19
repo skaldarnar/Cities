@@ -92,7 +92,9 @@ public class TownWallRasterizer implements WorldRasterizer {
         };
 
         Pen pen = Pens.fill(target, hm, topHm, DefaultBlockType.TOWER_WALL);
-        RasterUtil.drawLine(pen, new LineSegment(x1, z1, x2, z2));
+        //RasterUtil.drawLine(pen, new LineSegment(x1, z1, x2, z2));
+        //RasterUtil.drawThickLine(pen, x1, z1, x2, z2, 6, RasterUtil.ThicknessMode.MIDDLE);
+        RasterUtil.drawThickLineSimple(pen, new LineSegment(x1, z1, x2, z2), element.getWallThickness());
     }
 
     private void rasterGate(RasterTarget target, GateWallSegment element, HeightMap terrain) {
