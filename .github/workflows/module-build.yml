@@ -17,16 +17,25 @@ jobs:
         with:
           repository: MovingBlocks/Terasology
           ref: ${{ steps.terasology.outputs.release }}
+      - run: ls .
       - name: Checkout Module
         uses: actions/checkout@v2
         with:
           path: modules/${{ github.event.repository.name }}
+          clean: false
+      - run: |
+          echo "=== root\n"
+          ls .
+          echo "=== modules\n"
+          ls modules
       - name: Set up JDK 8
         uses: actions/setup-java@v1
         with:
           java-version: 8
       - name: Get module version
-        run: echo '::set-env name=MODULE_VERSION::$(./gradlew :modules:${{ github.event.repository.name }}:properties | grep "version:" | awk "{print $2}")'
+        run: |
+          echo '::set-env name=MODULE_VERSION::$(./gradlew :modules:${{ github.event.repository.name }}:properties | grep "version:" | awk "{print $2}")'
+          echo echo $MODULE_VERSION
         shell: bash
       - name: Build module JAR
         run: ./gradlew :modules:${{ github.event.repository.name }}:jar
