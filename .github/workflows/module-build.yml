@@ -39,3 +39,4 @@ jobs:
         with:
           name: ${{ github.event.repository.name }}-$MODULE_VERSION.jar
           path: modules/${{ github.event.repository.name }}/build/libs/${{ github.event.repository.name }}-$MODULE_VERSION.jar
+          shell: bash
