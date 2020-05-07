@@ -37,6 +37,6 @@ jobs:
       - name: Upload Build Artifact
         uses: actions/upload-artifact@v2
         with:
-          name: ${{ github.event.repository.name }}-$MODULE_VERSION.jar
-          path: modules/${{ github.event.repository.name }}/build/libs/${{ github.event.repository.name }}-${MODULE_VERSION}.jar
+          name: ${{ github.event.repository.name }}-${{ env.MODULE_VERSION }}.jar
+          path: modules/${{ github.event.repository.name }}/build/libs/${{ github.event.repository.name }}-${{ env.MODULE_VERSION }}.jar
           shell: bash
