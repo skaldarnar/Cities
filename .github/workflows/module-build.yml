@@ -29,7 +29,7 @@ jobs:
       - name: Copy Gradle build file
         run: cp modules/Core/build.gradle modules/${{ github.event.repository.name }}
       - name: Get module version
-        run: echo ::set-env name=MODULE_VERSION::$(./gradlew :modules:${{ github.event.repository.name }}:properties | grep "version:" | awk "{print $2}")
+        run: echo ::set-env name=MODULE_VERSION::$(./gradlew :modules:${{ github.event.repository.name }}:properties | grep "version:" | awk '{print $2}')
         shell: bash
       - run: echo ::debug $MODULE_VERSION
       - name: Build module JAR
